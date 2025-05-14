@@ -166,6 +166,10 @@ export interface Reflections {
    * Key content to remember about the user when generating content.
    */
   content: string[];
+  /**
+   * Assumptions about the user's role/objectives for the assistant to use.
+   */
+  assistantRole: string[];
 }
 
 export type ContextDocument = {

@@ -44,20 +44,24 @@ export function useStore() {
 
     let styleRules = item.value.styleRules ?? [];
     let content = item.value.content ?? [];
+    let assistantRole = item.value.assistantRole ?? [];
     try {
       styleRules =
         typeof styleRules === "string" ? JSON.parse(styleRules) : styleRules;
       content = typeof content === "string" ? JSON.parse(content) : content;
+      assistantRole = typeof assistantRole === "string" ? JSON.parse(assistantRole) : assistantRole;
     } catch (e) {
       console.error("Failed to parse reflections", e);
       styleRules = [];
       content = [];
+      assistantRole = [];
     }
 
     setReflections({
       ...item.value,
       styleRules,
       content,
+      assistantRole,
       updatedAt: new Date(item.updatedAt),
       assistantId,
     });
