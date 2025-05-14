@@ -18,7 +18,7 @@ export const CUSTOM_QUICK_ACTION_CONVERSATION_CONTEXT = `Here is the last 5 (or 
 {conversation}
 </conversation>`;
 
-export const REFLECTIONS_QUICK_ACTION_PROMPT = `The following are reflections on the user's style guidelines and general memories/facts about the user.
+export const REFLECTIONS_QUICK_ACTION_PROMPT = `The following are reflections on the user's style guidelines, general memories/facts about the user, and assumptions about their role/objectives.
 Use these reflections as context when generating your response.
 <reflections>
 {reflections}

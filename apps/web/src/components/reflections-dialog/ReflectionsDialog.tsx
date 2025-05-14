@@ -197,6 +197,23 @@ export function ReflectionsDialog(props: ReflectionsDialogProps) {
                   </ul>
                 </div>
               )}
+              {reflections?.assistantRole && (
+                <div className="mb-6">
+                  <TighterText className="text-xl font-light text-gray-800 sticky top-0 bg-white py-2 mb-3">
+                    Assistant Role Reflections:
+                  </TighterText>
+                  <ul className="list-disc list-inside space-y-2">
+                    {reflections.assistantRole.map((rule, index) => (
+                      <li key={index} className="flex items-baseline">
+                        <span className="mr-2">•</span>
+                        <TighterText className="text-gray-600 font-light">
+                          {rule}
+                        </TighterText>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </>
           ) : null}
         </div>

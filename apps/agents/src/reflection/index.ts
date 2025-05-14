@@ -44,6 +44,9 @@ export const reflect = async (
       content: z
         .array(z.string())
         .describe("The complete new list of memories/facts about the user."),
+      assistantRole: z
+        .array(z.string())
+        .describe("The complete new list of assumptions about the user's role/objectives."),
     }),
   };
 
@@ -95,6 +98,7 @@ export const reflect = async (
   const newMemories = {
     styleRules: reflectionToolCall.args.styleRules,
     content: reflectionToolCall.args.content,
+    assistantRole: reflectionToolCall.args.assistantRole,
   };
 
   await store.put(memoryNamespace, memoryKey, newMemories);
