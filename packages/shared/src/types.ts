@@ -73,7 +73,8 @@ export type LanguageOptions =
   | "mandarin"
   | "spanish"
   | "french"
-  | "hindi";
+  | "hindi"
+  | "german";
 
 export type ProgrammingLanguageOptions =
   | "typescript"

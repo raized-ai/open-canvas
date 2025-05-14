@@ -4,6 +4,7 @@ import {
   IndiaFlag,
   SpanishFlag,
   FrenchFlag,
+  GermanFlag,
 } from "@/components/icons/flags";
 import { TooltipIconButton } from "@/components/ui/assistant-ui/tooltip-icon-button";
 import { GraphInput } from "@opencanvas/shared/types";
@@ -70,6 +71,15 @@ export function TranslateOptions(props: TranslateOptionsProps) {
         onClick={async () => await handleSubmit("french")}
       >
         <FrenchFlag />
+      </TooltipIconButton>
+      <TooltipIconButton
+        tooltip="German"
+        variant="ghost"
+        className="transition-colors w-[36px] h-[36px]"
+        delayDuration={400}
+        onClick={async () => await handleSubmit("german")}
+      >
+        <GermanFlag />
       </TooltipIconButton>
     </div>
   );
