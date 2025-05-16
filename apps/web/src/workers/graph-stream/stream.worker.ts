@@ -16,6 +16,7 @@ ctx.addEventListener("message", async (event: MessageEvent<StreamConfig>) => {
       streamMode: "events",
       config: {
         configurable: {
+          assistant_id: assistantId,
           customModelName: modelName,
           modelConfig: modelConfigs[modelName as keyof typeof modelConfigs],
         },

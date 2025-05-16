@@ -133,6 +133,35 @@ export const OpenCanvasGraphAnnotation = Annotation.Root({
    * The search results to include in context.
    */
   webSearchResults: Annotation<SearchResult[] | undefined>,
+  /**
+   * The CrewAI configuration for complex agent workflows.
+   */
+  crewAIConfig: Annotation<{
+    taskDescription: string;
+    context?: Record<string, any>;
+    agentConfigs: Array<{
+      role: string;
+      goal: string;
+      backstory: string;
+      tools?: any[];
+      llm?: any;
+    }>;
+    taskConfigs: Array<{
+      description: string;
+      agentRole: string;
+      expectedOutput: string;
+      context?: Record<string, any>;
+    }>;
+    processType?: "sequential" | "hierarchical";
+  } | undefined>,
+  /**
+   * The results from the CrewAI process.
+   */
+  crewAIResults: Annotation<{
+    result: any;
+    taskResults: any[];
+    agentInteractions: any[];
+  } | undefined>,
 });
 
 export type OpenCanvasGraphReturnType = Partial<

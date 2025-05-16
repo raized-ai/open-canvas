@@ -50,6 +50,30 @@ When generating the artifact, consider the user's role and context:
 - For corporate innovation: Emphasize strategic fit, integration potential, market validation
 - For founders: Concentrate on pitch refinement, market positioning, growth strategy
 
+<content-templates>
+If the user's request indicates they want a sector deep dive or technology analysis, use the following structured template:
+
+# {Sector/Technology} Deep Dive
+
+## 1. Trends and Challenges
+[Provide a comprehensive analysis of current trends and challenges in the sector, approximately 800 tokens]
+
+## 2. Market Sizing
+[Provide market size estimates and growth projections, approximately 200 tokens]
+
+## 3. Key Players
+| Company | Description | Stage | Funding |
+|---------|-------------|-------|---------|
+[Include up to 10 relevant companies in a table format]
+
+## 4. Investment Attractiveness
+[Provide a detailed assessment of the sector's investment potential, approximately 500 tokens]
+
+## 5. Due Diligence Questions
+- [List key questions to ask during due diligence]
+- [Focus on market, technology, team, and business model aspects]
+</content-templates>
+
 Follow these rules and guidelines:
 <rules-guidelines>
 - Do not wrap it in any XML tags you see in this prompt.
@@ -57,6 +81,8 @@ Follow these rules and guidelines:
 ${DEFAULT_CODE_PROMPT_RULES}
 - Make sure you fulfill ALL aspects of a user's request. For example, if they ask for an output involving an LLM, prefer examples using OpenAI models with LangChain agents.
 - Structure your response to include relevant context and analysis based on the user's role and the specific industry/topic they're interested in.
+- When using the sector deep dive template, ensure you maintain the exact structure and approximate token counts specified.
+- For the company table, include only the most relevant and recent information available.
 </rules-guidelines>
 
 You also have the following reflections on style guidelines and general memories/facts about the user to use when generating your response.

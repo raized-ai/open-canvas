@@ -9,6 +9,7 @@ import { TooltipIconButton } from "../assistant-ui/tooltip-icon-button";
 import { cn } from "@/lib/utils";
 import { useGraphContext } from "@/contexts/GraphContext";
 import { useAssistantContext } from "@/contexts/AssistantContext";
+import { CrewAITriggerDialog } from "./crew-ai-trigger-dialog";
 
 interface ComposerActionsPopOutProps {
   userId: string | undefined;
@@ -152,6 +153,7 @@ export function ComposerActionsPopOut(props: ComposerActionsPopOutProps) {
                   }}
                 />
               )}
+              <CrewAITriggerDialog />
               <ComposerAddAttachment className="hover:bg-blue-100 transition-colors ease-in-out" />
             </motion.div>
           )}

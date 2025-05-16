@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/resizable";
 import { CHAT_COLLAPSED_QUERY_PARAM } from "@/constants";
 import { useRouter, useSearchParams } from "next/navigation";
+import { CrewAIArtifact } from "@/components/artifacts/components/CrewAIArtifact"
 
 export function CanvasComponent() {
   const { graphData } = useGraphContext();
@@ -37,6 +38,11 @@ export function CanvasComponent() {
   const [isEditing, setIsEditing] = useState(false);
   const [webSearchResultsOpen, setWebSearchResultsOpen] = useState(false);
   const [chatCollapsed, setChatCollapsed] = useState(false);
+  const [crewAIArtifacts, setCrewAIArtifacts] = useState<{
+    title: string
+    content: string
+    createdAt: string
+  }[]>([])
 
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -53,6 +59,12 @@ export function CanvasComponent() {
       router.replace(`?${queryParams.toString()}`, { scroll: false });
     }
   }, [chatCollapsedSearchParam]);
+
+  // Expose a global for demo/dev: window.addCrewAIArtifact
+  if (typeof window !== "undefined") {
+    // @ts-ignore
+    window.addCrewAIArtifact = (artifact) => setCrewAIArtifacts((prev) => [...prev, artifact])
+  }
 
   const handleQuickStart = (
     type: "text" | "code",
@@ -207,6 +219,10 @@ export function CanvasComponent() {
             className="flex flex-row w-full"
           >
             <div className="w-full ml-auto">
+              {/* Render CrewAI Artifacts */}
+              {crewAIArtifacts.map((artifact, idx) => (
+                <CrewAIArtifact key={artifact.createdAt + idx} {...artifact} />
+              ))}
               <ArtifactRenderer
                 chatCollapsed={chatCollapsed}
                 setChatCollapsed={(c) => {

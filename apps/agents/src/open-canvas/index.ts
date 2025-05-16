@@ -16,6 +16,7 @@ import { OpenCanvasGraphAnnotation } from "./state.js";
 import { summarizer } from "./nodes/summarizer.js";
 import { graph as webSearchGraph } from "../web-search/index.js";
 import { createAIMessageFromWebResults } from "../utils.js";
+import { crewAINode } from "./nodes/crew-ai/index.js";
 
 const routeNode = (state: typeof OpenCanvasGraphAnnotation.State) => {
   if (!state.next) {
@@ -125,6 +126,7 @@ const builder = new StateGraph(OpenCanvasGraphAnnotation)
   .addNode("summarizer", summarizer)
   .addNode("webSearch", webSearchGraph)
   .addNode("routePostWebSearch", routePostWebSearch)
+  .addNode("crewAI", crewAINode)
   // Initial router
   .addConditionalEdges("generatePath", routeNode, [
     "updateArtifact",
@@ -136,6 +138,7 @@ const builder = new StateGraph(OpenCanvasGraphAnnotation)
     "customAction",
     "updateHighlightedText",
     "webSearch",
+    "crewAI",
   ])
   // Edges
   .addEdge("generateArtifact", "generateFollowup")
